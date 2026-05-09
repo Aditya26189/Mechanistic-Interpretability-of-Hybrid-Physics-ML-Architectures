@@ -1,0 +1,16 @@
+{
+  "invlens_r90_mean": 20.332547184824943,
+  "invlens_r90_std": 13.592705336710743,
+  "poisson_r90_mean": 0.44020374324638395,
+  "poisson_r90_std": 0.3398245024503551,
+  "handoff_r90_mean": 4.0470521822571754,
+  "amplification_over_poisson": 46.18894553914612,
+  "amplification_over_handoff": 5.024038786483948,
+  "tta_ci_lo": -0.00065089733015746,
+  "tta_ci_hi": 0.005157354816415663,
+  "tta_cilo": -0.00065089733015746,
+  "tta_cihi": 0.005157354816415663,
+  "kappa_only_ablation": 3.292424068174192,
+  "isr_ablation": 3.801696670193757,
+  "full_ablation": 3.1619800251030497
+}

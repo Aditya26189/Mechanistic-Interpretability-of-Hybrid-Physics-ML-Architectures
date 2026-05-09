@@ -1,0 +1,3 @@
+model,hook,mean_accuracy,std_accuracy,chance,delta_over_chance,n_samples,raw_features,pca_components_used,n_splits,acc,std,margin_over_chance,raw_dim,pca_dim,cache_key,var_explained
+VanillaLensPINN,H09_poisson,0.1535714285714285,0.0161308425580517,0.1428571428571428,0.0107142857142857,1400,1,1,5,0.1535714285714285,0.0161308425580517,0.0107142857142857,1,1,,
+VanillaLensPINN,H12_handoff,0.1428571428571428,0.0,0.1428571428571428,0.0,1400,4,4,5,0.1428571428571428,0.0,0.0,4,4,,

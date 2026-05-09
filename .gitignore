@@ -1,0 +1,14 @@
+venv/
+antigravity.md
+__pycache__/
+
+runs-d4/run1/d4-mi-2-ran2-correct auc.zip
+runs-vanilla/run1/vanilla_phase2_best (1).pth
+*.zip
+*.pth
+
+archive
+
+runs-d4
+runs-vanilla
+notebooks and results

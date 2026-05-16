@@ -161,8 +161,8 @@ Open `vanilla-notebook.ipynb`. Runs `VanillaLensPINN` (identical pipeline, non-e
 ### 4. Run the MI Experiment
 
 Open `d4-PINN-MI notebook.ipynb`. Requires trained checkpoints from Steps 2–3 mounted as Kaggle datasets at:
-- `PINN_CKPT = /kaggle/input/datasets/.../d4_phase2_best.pth`
-- `RESNET_CKPT = /kaggle/input/datasets/.../resnet18_baseline_best.pth`
+- `PINN_CKPT = /kaggle/input/datasets/Aditya26189/d4-pinn-and-resnet/d4_phase2_best.pth`
+- `RESNET_CKPT = /kaggle/input/datasets/Aditya26189/d4-pinn-and-resnet/resnet18_baseline_best.pth`
 
 Run the pre-flight checks (Cells 1–2) before executing the main MI loop.
 

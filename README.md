@@ -1,4 +1,4 @@
-# D4-LensPINN v4
+# Mechanistic-Interpretability-of-Hybrid-Physics-ML-Architectures
 
 ### Physics-Informed Gravitational Lens Substructure Classifier with D4 Equivariance & Mechanistic Interpretability
 
@@ -9,19 +9,33 @@
 
 ---
 
-## What This Is
+## Overview: A Mechanistic Interpretability Study
 
-This repository contains a **physics-informed neural network** (PINN) for classifying gravitational lens images by dark-matter substructure type, paired with a rigorous **mechanistic interpretability (MI)** study of how the model's internal representations behave under the D4 symmetry group.
+This repository presents a rigorous **mechanistic interpretability (MI)** study investigating how **D4 equivariance** causally alters the internal representations of a **physics-informed neural network (PINN)**. 
 
-The core novelty is twofold:
+While the repository contains a highly accurate, state-of-the-art classifier for gravitational lens images, the **primary focus is the mechanistic analysis** of its internal workings—specifically how the model processes spatial and orientation information through its physics-informed layers. We compare an equivariant model (`D4LensPINN`) against a non-equivariant control (`VanillaLensPINN`) and a baseline (`ResNet18`) by tracking representations across 17 architectural hooks.
 
-1. **Differentiable Physics Pipeline** — The gravitational lensing equation `β = θ − α(θ)` is implemented as a parameter-free, fully differentiable PyTorch module. The network simultaneously learns to predict the convergence map κ̂ and is penalised if it violates the Poisson equation `∇²Ψ = 2κ̂`.
+The core novelty is threefold:
 
-2. **D4 Group Equivariance** — The convergence estimator (Stage 1) is built using `escnn` equivariant layers under the dihedral group D4 = {4 rotations × 1 flip}. This is the correct symmetry for gravitational lensing, which is invariant under both rotation and parity reflection.
+1. **Mechanistic Interpretability of Equivariance** — We apply causal interventions (activation patching), linear probing, and geometric analysis to map how group-element information is transmitted, collapsed, or routed through the network.
+2. **Differentiable Physics Pipeline** — The gravitational lensing equation `β = θ − α(θ)` is implemented as a parameter-free, fully differentiable PyTorch module. Our MI study proves this pipeline actively routes orientation information to the classifier head (triggering a 46× causal amplification).
+3. **D4 Group Equivariance** — The convergence estimator is built using `escnn` equivariant layers under the dihedral group D4 (the exact physical symmetry for gravitational lensing).
 
 ---
 
-## Task
+## Key Mechanistic Findings
+
+To isolate the causal effect of equivariance, we employ four complementary techniques: **Activation Patching**, **Linear Probing**, **Within-Orbit Cosine Distance**, and **Polytope Geometry**.
+
+* **Chain Property Failure:** Deterministic eval-mode BatchNorm causes structurally identical logit deltas across head hooks, making head-level routing or collapse indeterminate.
+* **Probe-Delta Dissociation:** At specific layers (e.g., Hook 09 - Poisson Solver), we observe high linear probe decodability (0.492) but surprisingly low causal sensitivity (Δ-L2 ≈ 0.40).
+* **Physics Pipeline Routing:** The parameter-free inverse lens layer massively amplifies causal sensitivity, actively routing orientation information to the final classifier.
+
+For a comprehensive breakdown of the methodology, hooks, and full causal intervention results, see the **[Mechanistic Interpretability Reference](docs/MECHANISTIC_INTERPRETABILITY.md)**.
+
+---
+
+## Target
 
 Classify 150×150 grayscale gravitational lens images into three dark-matter substructure classes:
 
@@ -101,7 +115,8 @@ d7/
 ├── docs/                                           # Technical documentation
 │   ├── ARCHITECTURE.md                             # All classes, modules, design decisions
 │   ├── TRAINING.md                                 # Loss functions, optimizers, training phases
-│   └── MECHANISTIC_INTERPRETABILITY.md             # MI methodology, hooks, analysis outputs
+│   ├── MECHANISTIC_INTERPRETABILITY.md             # MI methodology, hooks, analysis outputs
+│   └── RESULTS.md                                  # MI results    
 │
 ├── README.md
 └── .gitignore
